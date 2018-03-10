@@ -6,17 +6,6 @@ CREATE SCHEMA IF NOT EXISTS `Discografia` DEFAULT CHARACTER SET utf8 COLLATE utf
 USE `Discografia` ;
 
 -- -----------------------------------------------------
--- Table `Discografia`.`Stock`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `Discografia`.`Stock` (
-  `idStock` INT NOT NULL ,
-  `Cantidad` INT NULL ,
-  `Fecha_ingreso` DATE NULL ,
-  PRIMARY KEY (`idStock`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Discografia`.`Disco`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `Discografia`.`Disco` (
@@ -25,18 +14,22 @@ CREATE  TABLE IF NOT EXISTS `Discografia`.`Disco` (
   `Autor` VARCHAR(255) NOT NULL ,
   `Formato` VARCHAR(45) NOT NULL ,
   `Genero` VARCHAR(45) NOT NULL ,
-  `ISMN` INT NOT NULL ,
+  `ISMN` VARCHAR(16) NOT NULL ,
   `Sello_discografico` VARCHAR(145) NOT NULL ,
   `Clasificacion` VARCHAR(45) NULL ,
-  `idStock` INT NOT NULL ,
   PRIMARY KEY (`idDisco`) ,
-  UNIQUE INDEX `idDisco_UNIQUE` (`idDisco` ASC) ,
-  INDEX `fk_Disco_Stock_idx` (`idStock` ASC) ,
-  CONSTRAINT `fk_Disco_Stock`
-    FOREIGN KEY (`idStock` )
-    REFERENCES `Discografia`.`Stock` (`idStock` )
-    ON DELETE RESTRICT
-    ON UPDATE CASCADE)
+  UNIQUE INDEX `idDisco_UNIQUE` (`idDisco` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Discografia`.`Stock`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `Discografia`.`Stock` (
+  `idStock` INT NOT NULL ,
+  `Cantidad` INT NULL ,
+  `Fecha_ingreso` DATE NULL ,
+  PRIMARY KEY (`idStock`) )
 ENGINE = InnoDB;
 
 USE `Discografia` ;
