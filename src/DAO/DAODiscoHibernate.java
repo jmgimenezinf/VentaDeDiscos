@@ -5,6 +5,12 @@
  */
 package DAO;
 
+import Hibernate.SingletonConection;
+import Modelo.Disco;
+import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 /**
  *
  * @author martin
@@ -12,13 +18,22 @@ package DAO;
 public class DAODiscoHibernate implements IDAODisco{
 
     @Override
-    public void consultar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List consultar() {
+        Session session = SingletonConection.getSessionFactory().openSession();
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Disco.class);
+        List discos = criteria.list();
+        session.getTransaction().commit();
+        return discos;
     }
 
     @Override
-    public void save() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void guardar(Disco disco) {
+        Session session = SingletonConection.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(disco);
+        session.getTransaction().commit();
+        
     }
     
 }

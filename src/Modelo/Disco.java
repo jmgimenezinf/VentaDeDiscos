@@ -5,44 +5,53 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 /**
  *
  * @author martin
  */
-public class Disco {
-   private int idDisco;
-   private String titulo;
-   private String autor;  
-   private String formato;
-   private String genero;
-   private String ismn;
-   private String selloDiscografico;
-   private String clasificacion;
-   private ArrayList<Stock> stockArray; 
 
+@Entity
+@Table(name="Disco")
+public class Disco {
+    
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   @Column(name="idDisco")
+   private int idDisco;
+   
+   @Column(name="Titulo")
+   private String titulo;
+   
+   @Column(name="Autor")   
+   private String autor;  
+   
+   @Column(name="Formato")
+   private String formato;
+   
+   @Column(name="Genero")   
+   private String genero;
+   
+   @Column(name="ISMN")   
+   private String ismn;
+   
+   @Column(name="Sello_discografico")
+   private String selloDiscografico;
+   
+   @Column(name="Clasificacion")   
+   private String clasificacion;
+   
+ //  private ArrayList<Stock> stockArray; 
 
    
-   public Disco(int idDisco,String titulo,String autor,String formato,String genero,String ismn,
-           String selloDiscografico,String clasificacion){
-       this.setIdDisco(idDisco);
-       this.setTitulo(titulo);
-       this.setAutor(autor);
-       this.setFormato(formato);
-       this.setGenero(genero);
-       this.setIsmn(ismn);
-       this.setSelloDiscografico(selloDiscografico);
-       this.setClasificacion(clasificacion);
-      
-   }
-    public ArrayList<Stock> getStockArray() {
-        return stockArray;
-    }
-
-    public void setStockArray(ArrayList<Stock> stockArray) {
-        this.stockArray = stockArray;
-    }
     public int getIdDisco() {
         return idDisco;
     }

@@ -5,12 +5,15 @@
  */
 package DAO;
 
+import Modelo.Disco;
+import java.util.List;
+
 /**
  *
  * @author martin
  */
 public interface IDAODisco {
-    public void consultar();
-    public void save();
+    public List consultar();
+    public void guardar(Disco disco);
     
 }
