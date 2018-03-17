@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,9 +22,13 @@ public class Administrador extends javax.swing.JFrame {
     private  JDialog modalForm;
 
     public Administrador() {
+        
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setModalForm(new JDialog(this,"Crear disco", true));
         this.setFormCrearDisco(new FormCrearDisco(this.getModalForm()));
+        this.getModalForm().setResizable(false);
+        this.getModalForm().setLocationRelativeTo(this);
         this.getModalForm().getContentPane().add(this.getFormCrearDisco());
         this.getModalForm().pack();
     }
@@ -37,17 +42,15 @@ public class Administrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_disco = new javax.swing.JTable();
+        tablaDisco = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1024, 1024));
 
-        jLabel1.setText("Administrador");
-
-        tabla_disco.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDisco.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -94,10 +97,12 @@ public class Administrador extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabla_disco.setMinimumSize(new java.awt.Dimension(900, 400));
-        tabla_disco.setPreferredSize(new java.awt.Dimension(600, 1000));
-        jScrollPane1.setViewportView(tabla_disco);
+        tablaDisco.setMinimumSize(new java.awt.Dimension(900, 400));
+        tablaDisco.setPreferredSize(new java.awt.Dimension(600, 1000));
+        jScrollPane1.setViewportView(tablaDisco);
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Crear Disco");
         jButton1.setToolTipText("");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,32 +111,41 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("Discos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(406, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(104, 104, 104)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(423, Short.MAX_VALUE)))
         );
 
         jButton1.getAccessibleContext().setAccessibleName("btnCrearDisco");
@@ -152,13 +166,6 @@ public class Administrador extends javax.swing.JFrame {
         this.jButton1 = jButton1;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
@@ -168,12 +175,12 @@ public class Administrador extends javax.swing.JFrame {
         this.jScrollPane1 = jScrollPane1;
     }
 
-    public JTable getTabla_disco() {
-        return tabla_disco;
+    public JTable getTablaDisco() {
+        return tablaDisco;
     }
 
-    public void setTabla_disco(JTable tabla_disco) {
-        this.tabla_disco = tabla_disco;
+    public void setTablaDisco(JTable tablaDisco) {
+        this.tablaDisco = tablaDisco;
     }
 
 
@@ -198,8 +205,8 @@ public class Administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_disco;
+    private javax.swing.JTable tablaDisco;
     // End of variables declaration//GEN-END:variables
 }
