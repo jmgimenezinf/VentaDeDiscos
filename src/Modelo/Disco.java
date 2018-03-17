@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -37,9 +38,6 @@ public class Disco {
    @Column(name="Formato")
    private String formato;
    
-   @Column(name="Genero")   
-   private String genero;
-   
    @Column(name="ISMN")   
    private String ismn;
    
@@ -49,7 +47,11 @@ public class Disco {
    @Column(name="Clasificacion")   
    private String clasificacion;
    
- //  private ArrayList<Stock> stockArray; 
+   
+   @ManyToOne 
+   private Genero genero;
+   
+ 
 
    
     public int getIdDisco() {
@@ -84,13 +86,15 @@ public class Disco {
         this.formato = formato;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
+
+
 
     public String getIsmn() {
         return ismn;

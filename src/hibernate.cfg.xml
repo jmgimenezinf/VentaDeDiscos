@@ -11,5 +11,6 @@
     <property name="show_sql">true</property>
     <mapping class="Modelo.Disco"/>
     <mapping class="Modelo.Stock"/>
+    <mapping class="Modelo.Genero"/>
   </session-factory>
 </hibernate-configuration>

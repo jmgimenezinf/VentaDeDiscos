@@ -26,17 +26,19 @@ public class TestHibernate {
     public static void main(String[] args)  {
         System.out.println("Hibernate Example XML");
         Session session = SingletonConection.getSessionFactory().openSession();
-      
+        
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Disco.class);
-        Criteria criteriaStock = session.createCriteria(Stock.class);
-        List stocks = criteriaStock.list();
+        
+        Criteria criteriaDisco = session.createCriteria(Disco.class);
+       // Criteria criteriaStock = session.createCriteria(Stock.class);
+        List discos = criteriaDisco.list();
 
-        Iterator itr = stocks.iterator();
+        Iterator itr = discos.iterator();
         while(itr.hasNext()){
-            Stock stock = (Stock) itr.next();
-            System.out.println("Titulo Disco : " + stock.getDisco().getAutor() + "Stock disponible: " + stock.getCantidad());
+            Disco disco = (Disco) itr.next();
+            System.out.println("Titulo : "+ disco.getTitulo() + "Genero :" + disco.getGenero().getGenero());
         }
+        
         session.getTransaction().commit();
     }
     
